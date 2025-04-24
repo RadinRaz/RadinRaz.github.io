@@ -14,6 +14,7 @@ function startSound() {
     if (soundStarted) return;
 
     try {
+      
         clockSound.load();
         clockSound.currentTime = 0;
         clockSound.play().catch(err => console.warn("Error playing sound:", err));
