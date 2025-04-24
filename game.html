@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>بازی وزن افعال</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="game.js"></script>
+</head>
+<body>
+
+  <!-- صداها -->
+  <audio id="click-sound"   src="sounds/click.mp3"   preload="auto"></audio>
+  <audio id="correct-sound" src="sounds/correct.mp3" preload="auto"></audio>
+  <audio id="wrong-sound"   src="sounds/wrong.mp3"   preload="auto"></audio>
+  <audio id="bg-music"      src="sounds/timeup.mp3"   loop preload="auto"></audio>
+
+  <!-- حباب‌ها -->
+  <div class="float-circle" style="--size:120px; --top:10%; --left:15%; --delay:0s;"></div>
+  <div class="float-circle" style="--size:200px; --top:70%; --left:80%; --delay:2s;"></div>
+  <div class="float-circle" style="--size:150px; --top:80%; --left:20%; --delay:6s;"></div>
+
+  <!-- کانتینر بازی -->
+  <div id="game-container" class="hidden">
+    <div class="hud">
+      <div class="hud-item">زمان: <span id="time-left"></span> ثانیه</div>
+      <div class="hud-item">امتیاز: <span id="score"></span></div>
+    </div>
+
+    <div id="question-container">
+      <p id="question">در حال بارگذاری…</p>
+    </div>
+
+    <div id="choices">
+      <button class="option-btn"></button>
+      <button class="option-btn"></button>
+      <button class="option-btn"></button>
+    </div>
+  </div>
+
+  <!-- کانتینر پایان بازی -->
+  <div id="end-container" class="hidden">
+    <h2>⏰ وقت تمام شد!</h2>
+    <p>امتیاز شما: <span id="final-score"></span></p>
+    <button id="restart-btn">↻ دوباره بازی کن</button>
+    <button id="home-btn">🏠 صفحه اصلی</button>
+  </div>
+
+</body>
+</html>

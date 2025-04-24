@@ -1,0 +1,81 @@
+/* ریست و مرکزیت */
+* { margin:0; padding:0; box-sizing:border-box; font-family: Vazir, sans-serif; }
+html, body { width:100%; height:100%; overflow:hidden; }
+
+body {
+  background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+  background-size: 200% 200%;
+  animation: bgMove 10s ease infinite;
+}
+
+/* انیمیشن پس‌زمینه */
+@keyframes bgMove {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+/* حباب‌های شناور */
+.float-circle {
+  position: absolute;
+  width:  var(--size);
+  height: var(--size);
+  top:    var(--top);
+  left:   var(--left);
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  animation: floatUp 8s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+@keyframes floatUp {
+  0%   { transform: translateY(0)   scale(1)   rotate(0deg);   opacity: 0.7; }
+  50%  { transform: translateY(-40px) scale(1.1) rotate(45deg); opacity: 0.4; }
+  100% { transform: translateY(0)   scale(1)   rotate(0deg);   opacity: 0.7; }
+}
+
+/* باکس کلی لودر */
+.loader-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+  text-align: center;
+}
+
+/* اسپینر */
+.spinner {
+  width: 70px;
+  height: 70px;
+  border: 8px solid rgba(255,255,255,0.6);
+  border-top-color: #ff416c;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 40px;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* باکس جملهٔ انگیزشی */
+.quote-box {
+  max-width: 480px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 10px;
+  padding: 20px 25px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+#quote-text {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+#quote-author {
+  font-size: 0.85rem;
+  color: #555;
+  text-align: left;
+}

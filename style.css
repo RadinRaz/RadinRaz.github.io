@@ -1,0 +1,287 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#wrapper {
+  /* این div باید همهٔ محتوا را بپوشاند */
+  width: 100%;
+  transform: scale(1.5);
+  transform-origin: center center;
+}
+
+
+/* ریست اولیه */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tahoma, sans-serif;
+  }
+  body {
+    background: #b8b8b8;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    direction: rtl;
+    text-align: center;
+  }
+  .hidden {
+    display: none !important;
+  }
+  
+  /* منوی اصلی */
+  #main-menu {
+    background: #c4c4c4;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.178);
+  }
+  .menu-btn {
+    display: block;
+    width: 200px;
+    margin: 12px auto;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    background: #858585;
+    color: #ffffff;
+    border-radius: 4px;
+    transition: background .2s;
+  }
+  .menu-btn:hover {
+    background: #45A049;
+  }
+  
+  /* صفحه بازی */
+  #game-container {
+    background: #e9e9e9;
+    padding: 20px;
+    width: 320px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .hud {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .hud-item {
+    font-weight: bold;
+  }
+  #question-container {
+    margin-bottom: 20px;
+    min-height: 50px;
+  }
+  #question {
+    font-size: 18px;
+  }
+  #choices {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .option-btn {
+    padding: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid #000000;
+    background: hwb(0 81% 19%);
+    border-radius: 4px;
+    transition: background .2s, color .2s;
+  }
+  .option-btn.correct {
+    background: #4CAF50;
+    color: #fff;
+  }
+  .option-btn.incorrect {
+    background: #f44336;
+    color: #fff;
+  }
+  .fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  
+  /* پایان بازی */
+  #end-container {
+    background: #858585;
+    padding: 20px;
+    width: 320px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  #end-container button {
+    margin-top: 12px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+  }
+  #restart-btn {
+    background: #4CAF50;
+    color: #fff;
+  }
+  #home-btn {
+    background: #2196F3;
+    color: #fff;
+  }
+  /* زیرمنو: ساخته شده توسط آقای رزاقی */
+#main-menu .made-by {
+  font-size: 13px;
+  color: #888;           /* خاکستری کم‌رنگ */
+  opacity: 0.7;          /* شفاف‌تر */
+  margin-top: 20px;      /* فاصله از دکمه‌ها */
+  font-style: italic;    /* کج (ایتالیک) */
+  letter-spacing: .5px;  /* فاصله بین حروف کمی بیشتر */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1); /* سایه ریز */
+  transition: opacity .3s;
+}
+
+#main-menu .made-by:hover {
+  opacity: 1;            /* وقتی روش می‌برید، پررنگ‌تر شود */
+}
+/* ریست و فونت */
+* {
+  margin:0; padding:0;
+  box-sizing:border-box;
+  font-family: 'Vazir', sans-serif;
+}
+body {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  /* بک‌گراند گرادیانت متحرک */
+  background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+  background-size: 200% 200%;
+  animation: bgMove 15s ease infinite;
+  direction: rtl;
+  text-align: center;
+}
+
+/* انیمیشن بک‌گراند */
+@keyframes bgMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* دایوهای حبابی */
+.float-circle {
+  position: absolute;
+  width:  var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  top:    var(--top);
+  left:   var(--left);
+  animation: floatUp 8s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+@keyframes floatUp {
+  0%   { transform: translateY(0)   translateX(0)   scale(1);   opacity: 0.8; }
+  50%  { transform: translateY(-30px) translateX(20px) scale(1.1); opacity: 0.4; }
+  100% { transform: translateY(0)   translateX(0)   scale(1);   opacity: 0.8; }
+}
+
+/* کارت منو */
+#main-menu {
+  position: relative;
+  z-index: 1;
+  background: rgba(255,255,255,0.9);
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  max-width: 350px;
+  width: 90%;
+}
+
+/* تیتر با گرادیانت متن متحرک */
+#main-menu h1 {
+  font-size: 2.4rem;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #ff8a00, #e52e71, #9e00ff);
+  background-clip: text;
+  color: transparent;
+  background-size: 300% 300%;
+  animation: textGradient 4s ease infinite;
+}
+@keyframes textGradient {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+/* دکمه‌های منو */
+.menu-btn {
+  display: block;
+  width: 100%;
+  margin: 12px 0;
+  padding: 12px;
+  font-size: 1.1rem;
+  color: #fff;
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: 
+    transform 0.2s ease, 
+    box-shadow 0.2s ease, 
+    background 0.5s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* افکت موج آب (ripple) ساده */
+.menu-btn::after {
+  content: "";
+  position: absolute;
+  width: 300%;
+  height: 300%;
+  background: rgba(255,255,255,0.2);
+  top: -100%; left: -100%;
+  transform: rotate(45deg) translateX(-100%) translateY(0);
+  transition: transform 0.6s ease;
+}
+.menu-btn:hover::after {
+  transform: rotate(45deg) translateX(100%) translateY(100%);
+}
+
+/* تغییرات هنگام hover */
+.menu-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  background: linear-gradient(45deg, #2b64ff7d, #417dff66);
+}
+.menu-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+/* برای دکمه‌های خاص اگر بخواهید رنگ متفاوت بدهید */
+/*
+#coming-soon-btn { background: #f39c12; }
+#play-game-btn    { background: #27ae60; }
+#leaderboard-menu-btn { background: #2980b9; }
+*/
+.nokte {
+
+opacity: 40%;
+font: bold;
+}
