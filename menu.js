@@ -91,3 +91,13 @@ playBtn.addEventListener("click", e => {
   // فقط یک تب جدید باز کن؛ تب فعلی هیچ تغییری نمی‌کند
   window.open("loader.html?redirect=game.html", "_blank");
 });
+document.addEventListener("visibilitychange", () => {
+  // بررسی اگر تب غیرفعال شده است
+  if (document.hidden) {
+    // توقف موسیقی پس‌زمینه
+    bgMusic.pause();
+  } else {
+    // پخش موسیقی هنگام برگشت
+    bgMusic.play().catch(() => {});
+  }
+});

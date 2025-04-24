@@ -172,3 +172,35 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 });
+document.addEventListener("DOMContentLoaded", () => {
+  // انتخاب عنصر صوتی
+  const bgMusic = document.getElementById("menu-bg");
+
+  // بررسی اگر موسیقی پس‌زمینه موجود است
+  if (bgMusic) {
+    // تنظیم ولوم
+    bgMusic.volume = 0.05;
+
+    // تلاش برای پخش موسیقی
+    bgMusic.play().catch(() => {
+      document.body.addEventListener(
+        "click",
+        () => bgMusic.play().catch(() => {}),
+        { once: true }
+      );
+    });
+
+    // توقف و ادامه موسیقی هنگام جابه‌جایی بین تب‌ها
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        // توقف موسیقی هنگام غیرفعال شدن تب
+        bgMusic.pause();
+      } else {
+        // ادامه موسیقی هنگام بازگشت به تب
+        bgMusic.play().catch(() => {});
+      }
+    });
+  }
+
+  // سایر کدهای قبلی leaderboard.js...
+});
