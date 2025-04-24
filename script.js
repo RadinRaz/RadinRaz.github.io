@@ -50,3 +50,46 @@ document.addEventListener("DOMContentLoaded", () => {
     location.href = "index.html";
   });
 });
+const API_URL = "https://script.google.com/macros/s/AKfycbwNX06lK-wBWEiv8roFVzxWAUooLToP6Uu5emcPaMz1cHebbrBj0oI28dCeCEWssabX/exec"; // آدرس API که از Google Apps Script گرفتی
+
+async function getLeaderboard() {
+  try {
+    const response = await fetch(`${API_URL}?action=getLeaderboard`);
+    const data = await response.json();
+
+    if (data.result === "success") {
+      displayLeaderboard(data.data);
+    } else {
+      console.error("Error getting leaderboard:", data.message);
+    }
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+function displayLeaderboard(leaderboardData) {
+  const tableBody = document.querySelector("#leaderboardTable tbody");
+  tableBody.innerHTML = ""; // پاک کردن جدول قبلی
+
+  leaderboardData.forEach(entry => {
+    const row = document.createElement("tr");
+
+    const nameCell = document.createElement("td");
+    nameCell.textContent = entry.Name;
+
+    const scoreCell = document.createElement("td");
+    scoreCell.textContent = entry.Score;
+
+    const timestampCell = document.createElement("td");
+    timestampCell.textContent = entry.Timestamp; // یا میتونی تاریخ رو فرمت کنی
+
+    row.appendChild(nameCell);
+    row.appendChild(scoreCell);
+    row.appendChild(timestampCell);
+
+    tableBody.appendChild(row);
+  });
+}
+
+// فراخوانی تابع برای دریافت Leaderboard وقتی صفحه لود میشه
+window.onload = getLeaderboard;
